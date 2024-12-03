@@ -89,6 +89,17 @@ void fill_and_print_array(std::unique_ptr<int[]> array = nullptr, size_t tmp = 0
 	std::cout << std::endl;
 }
 
+void fill_and_print_array(size_t tmp, std::unique_ptr<int[]> array = std::make_unique<int[]>(ARRAY_SIZE))
+{
+	for (size_t i{}; i < ARRAY_SIZE; ++i)
+	{
+		array[i] = static_cast<int>(tmp * 2);
+		std::cout << array[i] << ' ';
+		tmp += 3;
+	}
+	std::cout << '\n';
+}
+
 int main()
 {
 	ptrA arr[3] = { new A(9), new B({3, 'Z'}), new C({5, "abc"}) };
@@ -124,8 +135,10 @@ int main()
 
 
 	fill_and_print_array({}, 3);
+	fill_and_print_array(std::make_unique<int[]>(10));
 	fill_and_print_array(std::make_unique<int[]>(ARRAY_SIZE), 5); 
-	fill_and_print_array(); 
+	fill_and_print_array(3);
+	fill_and_print_array();
 	
 
 	return 0;

@@ -89,6 +89,17 @@ void fill_and_print_array(std::unique_ptr<int[]> array = nullptr, size_t tmp = 0
 	std::cout << std::endl;
 }
 
+void fill_and_print_array(std::unique_ptr<int[]> array, int n)
+{
+	array = std::make_unique<int[]>(n);
+	for (size_t i{}; i < n; ++i)
+	{
+		array[i] = static_cast<int>(i * 2);
+		std::cout << array[i] << ' ';
+	}
+	std::cout << '\n';
+}
+
 void fill_and_print_array(size_t tmp, std::unique_ptr<int[]> array = std::make_unique<int[]>(ARRAY_SIZE))
 {
 	for (size_t i{}; i < ARRAY_SIZE; ++i)
@@ -132,10 +143,10 @@ int main()
 	std::unique_ptr<int[]> darray(new int[5]);
 	std::unique_ptr<int[]> darray2 = std::make_unique<int[]>(5);
 	auto darr3 = std::make_unique<int[]>(6);
-
+	std::unique_ptr <int[]> darr;
 
 	fill_and_print_array({}, 3);
-	fill_and_print_array(std::make_unique<int[]>(10));
+	fill_and_print_array(std::move(darr), 10);
 	fill_and_print_array(std::make_unique<int[]>(ARRAY_SIZE), 5); 
 	fill_and_print_array(3);
 	fill_and_print_array();

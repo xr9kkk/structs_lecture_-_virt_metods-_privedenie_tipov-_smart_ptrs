@@ -151,6 +151,5 @@ int main()
 	fill_and_print_array(3);
 	fill_and_print_array();
 	
-
 	return 0;
 }	
